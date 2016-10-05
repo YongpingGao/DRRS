@@ -1,0 +1,44 @@
+{
+  "managerList": [
+    {
+      "managerID": "MTL0001",
+      "city": "Montreal"
+    },
+    {
+      "managerID": "MTL0002",
+      "city": "Montreal"
+    },
+    {
+      "managerID": "MTL0003",
+      "city": "Montreal"
+    },
+    {
+      "managerID": "MTL0004",
+      "city": "Montreal"
+    },
+    {
+      "managerID": "MTL0005",
+      "city": "Montreal"
+    },
+    {
+      "managerID": "WA0001",
+      "city": "Washington"
+    },
+    {
+      "managerID": "WA0002",
+      "city": "Washington"
+    },
+    {
+      "managerID": "WA0003",
+      "city": "Washington"
+    },
+    {
+      "managerID": "ND0001",
+      "city": "NewDelhi"
+    },
+    {
+      "managerID": "ND0002",
+      "city": "NewDelhi"
+    }
+  ]
+}

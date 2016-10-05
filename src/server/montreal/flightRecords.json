@@ -1,0 +1,31 @@
+{
+  "flightRecords": [
+    {
+      "recordID": "1475643279",
+      "departure": "Montreal",
+      "destination": "NewDelhi",
+      "economySeats": 54,
+      "businessSeats": 20,
+      "fitsSeats": 20,
+      "dateOfFlight": "Dec 4, 2016 10:21:54 AM"
+    },
+    {
+      "recordID": "1475643642",
+      "departure": "Montreal",
+      "destination": "Washington",
+      "economySeats": 55,
+      "businessSeats": 20,
+      "fitsSeats": 10,
+      "dateOfFlight": "Dec 4, 2000 10:20:35 AM"
+    },
+    {
+      "recordID": "1475643676",
+      "departure": "Montreal",
+      "destination": "NewDelhi",
+      "economySeats": 54,
+      "businessSeats": 20,
+      "fitsSeats": 20,
+      "dateOfFlight": "Dec 4, 2016 10:11:35 AM"
+    }
+  ]
+}
