@@ -20,4 +20,8 @@ private ArrayList<PassengerRecord> passengerRecords;
 	public ArrayList<PassengerRecord> getPassengerRecords() {
 		return passengerRecords;
 	}
+	
+	public int count() {
+		return passengerRecords.size();
+	}
 }

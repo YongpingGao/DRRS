@@ -17,7 +17,8 @@ import util.FileProcessing;
 
 public class ManagerClient {
 	private Manager manager;
-	private Calendar cal = Calendar.getInstance();;
+	private Calendar cal = Calendar.getInstance();
+	private SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm");
 	private void showCities(){
 		System.out.println("1. Montreal");
 		System.out.println("2. Washington");
@@ -57,6 +58,8 @@ public class ManagerClient {
 	            }
 	        }
 	        valid = false;
+	        City departure = manager.getCity();
+        	City destination = null;
 	        switch(userInput) {
 	        case 1: 
 	        	
@@ -64,8 +67,7 @@ public class ManagerClient {
 	        	System.out.println("Please input the recordID: ");
 	            String recordID = reader.nextLine(); //
 	 
-	        	City departure = manager.getCity();
-	        	City destination = null;
+	        	
 	    		System.out.println("Please choose the destination city:");
 	    		showCities();
 	    		while(!valid){
@@ -91,13 +93,13 @@ public class ManagerClient {
 	    			}
 	    		}	
 	    		
-	    		Date dateOfFlight = null;
+	    		String dateOfFlight = null;
 	    		System.out.println("Please input the date: (example: 2016-11-04-10-20)");
 	    	    String userInputDate = "";
 	    	    userInputDate = input.next();
 	        	int[] date = parseInput(userInputDate);
-	        	cal.set(date[0], date[1], date[2], date[3], date[4]);
-	        	dateOfFlight = cal.getTime();
+	        	cal.set(date[0], date[1] - 1, date[2], date[3], date[4]);
+	        	dateOfFlight = format.format(cal.getTime());
 	        	
 	        	FlightRecord fr = new FlightRecord(departure, destination, dateOfFlight);
 	        	String departureCity = departure.toString();
@@ -111,8 +113,15 @@ public class ManagerClient {
 	    		}
 	        	break;
 	        case 2:
-//	        	String results = manager.getBookedFlightCount();
-//	        	System.out.println(results);
+	        	try {
+	        		departureCity = departure.toString();
+	    			System.setSecurityManager(new RMISecurityManager());
+	    			DFRSInterface server = (DFRSInterface)Naming.lookup("rmi://localhost:" + ServerInfo.getServerMaps().get(departureCity) + "/" + departureCity); 			
+	    			System.out.println(server.getBookedFlightCount());
+	    	       	 
+	    		} catch(Exception e) {
+	    			e.printStackTrace();
+	    		}
 	        	break;
 	        default:
 	        	System.out.println("Not a valid option, choose again.");

@@ -14,11 +14,11 @@ public class FlightRecord implements Serializable {
 	private int businessSeats;
 	private int fitsSeats;
 	
-	private Date dateOfFlight;
+	private String dateOfFlight;
 	
  
 	
-	public FlightRecord(City departure, City destination, Date dateOfFlight) {
+	public FlightRecord(City departure, City destination, String dateOfFlight) {
 		this.departure = departure;
 		this.destination = destination;
 		this.dateOfFlight = dateOfFlight;
@@ -61,6 +61,22 @@ public class FlightRecord implements Serializable {
 	public String getRecordID() {
 		return recordID;
 	}
+
+	public City getDeparture() {
+		return departure;
+	}
+
+	public City getDestination() {
+		return destination;
+	}
+
+	public String getDateOfFlight() {
+		return dateOfFlight;
+	}
+	
+	
+	
+	
 	
 	
 	

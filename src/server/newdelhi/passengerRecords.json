@@ -1,0 +1,17 @@
+{
+  "j": {
+    "passengerRecords": [
+      {
+        "passenger": {
+          "firstName": "tom",
+          "lastName": "james",
+          "address": "dsadsa1312",
+          "phoneNumber": "12139876"
+        },
+        "destination": "Montreal",
+        "flightClass": "economy",
+        "dateOfFlight": "2016.10.10 10:10"
+      }
+    ]
+  }
+}

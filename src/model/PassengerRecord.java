@@ -8,9 +8,9 @@ public class PassengerRecord implements Serializable {
 	private Passenger passenger;
 	private City destination;
 	private FlightClass flightClass;
-	private Date dateOfFlight;
+	private String dateOfFlight;
 	
-	public PassengerRecord(Passenger passenger, City destination, FlightClass flightClass, Date dateOfFlight) {
+	public PassengerRecord(Passenger passenger, City destination, FlightClass flightClass, String dateOfFlight) {
 		this.passenger = passenger;
 		this.destination = destination;
 		this.flightClass = flightClass;
@@ -29,7 +29,7 @@ public class PassengerRecord implements Serializable {
 		return flightClass;
 	}
 
-	public Date getDateOfFlight() {
+	public String getDateOfFlight() {
 		return dateOfFlight;
 	}
 	

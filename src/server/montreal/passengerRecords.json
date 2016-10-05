@@ -1,0 +1,32 @@
+{
+  "g": {
+    "passengerRecords": [
+      {
+        "passenger": {
+          "firstName": "amazin",
+          "lastName": "gao",
+          "address": "sdadsa1411",
+          "phoneNumber": "1212121"
+        },
+        "destination": "Washington",
+        "flightClass": "fit",
+        "dateOfFlight": "Oct 5, 2016 11:33:45 AM"
+      }
+    ]
+  },
+  "m": {
+    "passengerRecords": [
+      {
+        "passenger": {
+          "firstName": "jaso",
+          "lastName": "ma",
+          "address": "1819sad",
+          "phoneNumber": "dsadsa"
+        },
+        "destination": "Washington",
+        "flightClass": "business",
+        "dateOfFlight": "2016.11.04 10:20"
+      }
+    ]
+  }
+}

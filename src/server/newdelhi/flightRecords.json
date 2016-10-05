@@ -1,0 +1,22 @@
+{
+  "flightRecords": [
+    {
+      "recordID": "1475683166",
+      "departure": "NewDelhi",
+      "destination": "Washington",
+      "economySeats": 65,
+      "businessSeats": 10,
+      "fitsSeats": 5,
+      "dateOfFlight": "2016.11.04 10:20"
+    },
+    {
+      "recordID": "1475683182",
+      "departure": "NewDelhi",
+      "destination": "Montreal",
+      "economySeats": 45,
+      "businessSeats": 30,
+      "fitsSeats": 20,
+      "dateOfFlight": "2016.10.10 10:10"
+    }
+  ]
+}
