@@ -1,0 +1,7 @@
+[Wed Oct 05 18:28:02 EDT 2016] MTL0001 logged in.
+[Wed Oct 05 18:28:05 EDT 2016] MTL0001 count the number of all the flight records.
+[Wed Oct 05 18:28:05 EDT 2016] MTL0001 logged in.
+[Wed Oct 05 18:28:17 EDT 2016] MTL0001 add a flight from Montreal to Washington at 2016.11.04 10:20.
+[Wed Oct 05 18:28:17 EDT 2016] MTL0001 logged in.
+[Wed Oct 05 18:28:28 EDT 2016] MTL0001 count the number of all the flight records.
+[Wed Oct 05 18:28:28 EDT 2016] MTL0001 logged in.

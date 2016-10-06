@@ -15,6 +15,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import model.City;
 import model.FlightRecord;
 import model.FlightRecords;
+import model.Log;
 import model.PassengerRecord;
 import model.PassengerRecords;
-import model.PassengerRecordsMap;
 import server.DFRSInterface;
 import util.FileProcessing;
 
@@ -41,7 +42,7 @@ public class MontrealServer implements DFRSInterface {
 	private static final String serverName = "Montreal";
 	private static final String HOST_NAME = "localhost";
 
-	private HashMap<Character, PassengerRecords> passengerRecordsMap = new HashMap<>();
+	private HashMap<String, PassengerRecords> passengerRecordsMap = new HashMap<>();
 	private FlightRecords flightRecords;
 	
 	public static void main(String[] args) {
@@ -65,18 +66,38 @@ public class MontrealServer implements DFRSInterface {
 	@Override
 	public void bookFlight(PassengerRecord passengerRecord) throws RemoteException {
 		
-		passengerRecordsMap = FileProcessing.sharedInstance().readFromJsonFile("src/server/montreal/passengerRecords.json", passengerRecordsMap.getClass());
-		if(passengerRecordsMap == null) passengerRecordsMap = new HashMap<>();
-		Character c = Character.toLowerCase(passengerRecord.getPassenger().getLastName().charAt(0));
-		if(passengerRecordsMap.get(c) == null) {
-			PassengerRecords passengerRecords = new PassengerRecords();
-			passengerRecords.addPassengerRecord(passengerRecord);
-			passengerRecordsMap.put(c, passengerRecords);
-		} else {
-			passengerRecordsMap.get(c).addPassengerRecord(passengerRecord);
-		}
-		
+		try {
+			passengerRecordsMap = new Gson().fromJson(new BufferedReader(new FileReader("src/server/montreal/passengerRecords.json")), new TypeToken<HashMap<String, PassengerRecords>>() {}.getType());
+			if(passengerRecordsMap == null) passengerRecordsMap = new HashMap<>();
+			
+			String c = Character.toString(Character.toLowerCase(passengerRecord.getPassenger().getLastName().charAt(0)));
+			
+			if(passengerRecordsMap.get(c) == null) {
+				PassengerRecords passengerRecords = new PassengerRecords();
+				passengerRecords.addPassengerRecord(passengerRecord);
+				passengerRecordsMap.put(c, passengerRecords);
+			} else {
+				passengerRecordsMap.get(c).addPassengerRecord(passengerRecord);
+			}
+		} catch (JsonIOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonSyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 		FileProcessing.sharedInstance().writeToJsonFile("src/server/montreal/passengerRecords.json", passengerRecordsMap);
+		
+		String ts = new Date().toString();
+		String who = "Passenger " + passengerRecord.getPassenger().getFullName();
+		String operation = "booked a flight from Montreal to " + passengerRecord.getDestination().toString() + " at " + passengerRecord.getDateOfFlight();
+		new Log(ts, who, operation).writeToLog("src/server/montreal/log.txt");
+		
+	
+		
 	}
 
 	@Override
@@ -91,6 +112,11 @@ public class MontrealServer implements DFRSInterface {
 		}
 		flightRecords.addFlightRecord(fr);
 		FileProcessing.sharedInstance().writeToJsonFile("src/server/montreal/flightRecords.json", flightRecords);
+		
+		String ts = new Date().toString();
+		String who = "Manager";
+		String operation = "add a flight from Montreal to " + fr.getDestination().toString() + " at " + fr.getDateOfFlight();
+		new Log(ts, who, operation).writeToLog("src/server/montreal/log.txt");
 		
 	}
 
@@ -107,6 +133,11 @@ public class MontrealServer implements DFRSInterface {
 			}
  		}
 		
+		String ts = new Date().toString();
+		String who = "Passenger";
+		String operation = "queried the available dates from Montreal to " + dest;
+		new Log(ts, who, operation).writeToLog("src/server/montreal/log.txt");
+		
 		if(dates.size() != 0) return dates;
 		else return null;
 	}
@@ -121,7 +152,7 @@ public class MontrealServer implements DFRSInterface {
 			
 			String message = "Montreal Request";
 			byte[] m  = message.getBytes();
-			InetAddress aHost = InetAddress.getByName("localhost");
+			InetAddress aHost = InetAddress.getByName(HOST_NAME);
 			 
 			DatagramPacket requestToWST = new DatagramPacket(m, message.length(), aHost, UDP_PORT_WST);
 			aSocket.send(requestToWST);
@@ -144,6 +175,12 @@ public class MontrealServer implements DFRSInterface {
 			sb.append(WSTCount);
 			sb.append("\n");
 			sb.append(NDLCount);
+			
+			String ts = new Date().toString();
+			String who = "Manager";
+			String operation = "count the number of all the flight records";
+			new Log(ts, who, operation).writeToLog("src/server/montreal/log.txt");
+			
 			return sb.toString();
 		} catch(SocketException e){
 			System.out.println("socket error");
@@ -189,12 +226,12 @@ public class MontrealServer implements DFRSInterface {
 		// TODO Auto-generated method stub
 		int count = 0;
 		
-		HashMap<Character, PassengerRecords> passengerRecordsMap;
+		HashMap<String, PassengerRecords> passengerRecordsMap;
 		try {
-			passengerRecordsMap = new Gson().fromJson(new BufferedReader(new FileReader("src/server/montreal/passengerRecords.json")), new TypeToken<Map<Character, PassengerRecords>>() {}.getType());
+			passengerRecordsMap = new Gson().fromJson(new BufferedReader(new FileReader("src/server/montreal/passengerRecords.json")), new TypeToken<HashMap<String, PassengerRecords>>() {}.getType());
 			if(passengerRecordsMap == null) return 0;
 			
-			for (Map.Entry<Character, PassengerRecords> entry : passengerRecordsMap.entrySet()) {
+			for (Map.Entry<String, PassengerRecords> entry : passengerRecordsMap.entrySet()) {
 				PassengerRecords passengerRecords = entry.getValue();
 				count += passengerRecords.count();
 			}
@@ -211,7 +248,7 @@ public class MontrealServer implements DFRSInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return 0;
-		}
+		}	
 	}
 }
 

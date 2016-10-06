@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import model.City;
 import model.FlightRecord;
+import model.Log;
 import model.Manager;
 import model.ManagerList;
 import model.Passenger;
@@ -42,6 +43,13 @@ public class ManagerClient {
 			System.out.println("Please tell us what you want to do: ");
 			System.out.println("1. edit flight record, if no records found, we will add a new one");
 			System.out.println("2. get booked flight count");
+			
+			String ts = new Date().toString();
+			String who = manager.getManagerID();
+			String operation = "logged in";
+			new Log(ts, who, operation).writeToLog("src/client/logs/" + who + ".txt");
+			
+			
 			Scanner input = new Scanner(System.in);
 	        Boolean valid = false;
 	        int userInput = 0;
@@ -108,6 +116,12 @@ public class ManagerClient {
 	    			DFRSInterface server = (DFRSInterface)Naming.lookup("rmi://localhost:" + ServerInfo.getServerMaps().get(departureCity) + "/" + departureCity); 			
 	    			server.addFlightRecord(fr, recordID);
 	    	       	System.out.println("Suecesfully add or edit the record!");
+	    	       	
+	    	        ts = new Date().toString();
+	    	        who = manager.getManagerID();
+	    	        operation = "add a flight from " + departureCity + " to " + destination.toString() + " at " + dateOfFlight;
+	    			new Log(ts, who, operation).writeToLog("src/client/logs/" + who + ".txt");
+	    	       	
 	    		} catch(Exception e) {
 	    			e.printStackTrace();
 	    		}
@@ -119,6 +133,11 @@ public class ManagerClient {
 	    			DFRSInterface server = (DFRSInterface)Naming.lookup("rmi://localhost:" + ServerInfo.getServerMaps().get(departureCity) + "/" + departureCity); 			
 	    			System.out.println(server.getBookedFlightCount());
 	    	       	 
+	    			ts = new Date().toString();
+	    			who = manager.getManagerID();
+	    			operation = "count the number of all the flight records";
+	    			new Log(ts, who, operation).writeToLog("src/client/logs/" + who + ".txt");
+	    			
 	    		} catch(Exception e) {
 	    			e.printStackTrace();
 	    		}

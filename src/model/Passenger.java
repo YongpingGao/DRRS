@@ -33,5 +33,9 @@ public class Passenger implements Serializable{
 		return phoneNumber;
 	}
 	
+	public String getFullName() {
+		return firstName + " " + lastName;
+	}
+	
 	
 }

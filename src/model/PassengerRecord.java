@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class PassengerRecord implements Serializable {
 
+	private String recordID;
 	private Passenger passenger;
 	private City destination;
 	private FlightClass flightClass;
@@ -15,6 +16,7 @@ public class PassengerRecord implements Serializable {
 		this.destination = destination;
 		this.flightClass = flightClass;
 		this.dateOfFlight = dateOfFlight;
+		this.recordID = Long.toString(System.currentTimeMillis() / 1000L);
 	}
 
 	public Passenger getPassenger() {

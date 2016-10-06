@@ -17,6 +17,24 @@
       "businessSeats": 10,
       "fitsSeats": 10,
       "dateOfFlight": "2016.11.04 10:20"
+    },
+    {
+      "recordID": "1475705579",
+      "departure": "Washington",
+      "destination": "NewDelhi",
+      "economySeats": 75,
+      "businessSeats": 20,
+      "fitsSeats": 20,
+      "dateOfFlight": "2016.11.22 11:22"
+    },
+    {
+      "recordID": "1475706457",
+      "departure": "Washington",
+      "destination": "NewDelhi",
+      "economySeats": 75,
+      "businessSeats": 20,
+      "fitsSeats": 20,
+      "dateOfFlight": "2016.11.04 10:20"
     }
   ]
 }

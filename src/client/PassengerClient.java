@@ -122,6 +122,7 @@ public class PassengerClient {
 				passengerRecord = new PassengerRecord(passenger, destinationCity, flightClass, dateOfFlight);
 				server.bookFlight(passengerRecord);
 				System.out.println("Successfully book a flight!");
+				System.out.println("Goodbye!");
 				System.exit(0);
 			} else {
 				System.out.println("This is the no availble dates for this flight, please correct your input.");

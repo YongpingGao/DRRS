@@ -1,0 +1,6 @@
+[Wed Oct 05 18:08:42 EDT 2016] Passenger queried the available dates from New Delhi to Washington.
+[Wed Oct 05 18:08:43 EDT 2016] Passenger Ben Laden booked a flight from New Delhi to Washington at 2016.11.04 10:20.
+[Wed Oct 05 18:12:03 EDT 2016] Passenger queried the available dates from New Delhi to Washington.
+[Wed Oct 05 18:12:05 EDT 2016] Passenger Jim Parsons booked a flight from New Delhi to Washington at 2016.11.04 10:20.
+[Wed Oct 05 18:56:59 EDT 2016] Passenger queried the available dates from New Delhi to Montreal.
+[Wed Oct 05 18:57:00 EDT 2016] Passenger dsa aa booked a flight from New Delhi to Montreal at 2016.10.10 10:10.

@@ -1,0 +1,5 @@
+[Wed Oct 05 18:26:44 EDT 2016] WA0002 logged in.
+[Wed Oct 05 18:26:47 EDT 2016] WA0002 count the number of all the flight records.
+[Wed Oct 05 18:26:47 EDT 2016] WA0002 logged in.
+[Wed Oct 05 18:27:37 EDT 2016] WA0002 add a flight from Washington to NewDelhi at 2016.11.04 10:20.
+[Wed Oct 05 18:27:37 EDT 2016] WA0002 logged in.

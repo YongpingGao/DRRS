@@ -1,0 +1,3 @@
+[Wed Oct 05 18:32:28 EDT 2016] WA0001 logged in.
+[Wed Oct 05 18:32:30 EDT 2016] WA0001 count the number of all the flight records.
+[Wed Oct 05 18:32:30 EDT 2016] WA0001 logged in.
