@@ -64,7 +64,7 @@ public class MontrealServer implements DFRSInterface {
 	}
 
 	@Override
-	public void bookFlight(PassengerRecord passengerRecord) throws RemoteException {
+	public synchronized void bookFlight(PassengerRecord passengerRecord) throws RemoteException {
 		
 		try {
 			passengerRecordsMap = new Gson().fromJson(new BufferedReader(new FileReader("src/server/montreal/passengerRecords.json")), new TypeToken<HashMap<String, PassengerRecords>>() {}.getType());
@@ -101,7 +101,7 @@ public class MontrealServer implements DFRSInterface {
 	}
 
 	@Override
-	public void addFlightRecord(FlightRecord fr, String recordID) throws RemoteException {
+	public synchronized void addFlightRecord(FlightRecord fr, String recordID) throws RemoteException {
 		
 		flightRecords = FileProcessing.sharedInstance().readFromJsonFile("src/server/montreal/flightRecords.json", FlightRecords.class);
 		if(flightRecords == null) flightRecords = new FlightRecords();

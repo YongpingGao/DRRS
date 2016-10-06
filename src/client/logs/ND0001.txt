@@ -1,0 +1,7 @@
+[Wed Oct 05 21:37:44 EDT 2016] ND0001 logged in.
+[Wed Oct 05 21:37:48 EDT 2016] ND0001 count the number of all the flight records.
+[Wed Oct 05 21:37:48 EDT 2016] ND0001 logged in.
+[Wed Oct 05 21:38:21 EDT 2016] ND0001 add a flight from NewDelhi to Montreal at 2016.12.03 01:11.
+[Wed Oct 05 21:38:21 EDT 2016] ND0001 logged in.
+[Wed Oct 05 21:38:32 EDT 2016] ND0001 count the number of all the flight records.
+[Wed Oct 05 21:38:32 EDT 2016] ND0001 logged in.

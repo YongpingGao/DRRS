@@ -17,6 +17,15 @@
       "businessSeats": 30,
       "fitsSeats": 20,
       "dateOfFlight": "2016.10.10 10:10"
+    },
+    {
+      "recordID": "1475717901",
+      "departure": "NewDelhi",
+      "destination": "Montreal",
+      "economySeats": 45,
+      "businessSeats": 30,
+      "fitsSeats": 20,
+      "dateOfFlight": "2016.12.03 01:11"
     }
   ]
 }
